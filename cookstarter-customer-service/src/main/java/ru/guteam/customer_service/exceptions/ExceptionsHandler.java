@@ -14,20 +14,20 @@ public class ExceptionsHandler {
 
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<?> JWTSignatureException(Exception e) {
-        log.error("Подлинность токена не установлена", e);
-        return new ResponseEntity<>("Подлинность токена не установлена", HttpStatus.UNAUTHORIZED);
+        log.error("The authenticity of the token has not been confirmed", e);
+        return new ResponseEntity<>("The authenticity of the token has not been confirmed", HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<?> resourceNotReadableException(Exception e) {
-        log.error("Ошибка в предоставленных данных. \n" + e);
+        log.error("Data in request was incorrect \n" + e);
         String[] exceptionCause = e.getCause().toString().split("\n");
-        return new ResponseEntity<>("Ошибка в предоставленных данных. " + exceptionCause[0], HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Data in request was incorrect. " + exceptionCause[0], HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     public ResponseEntity<?> exception(Exception e) {
-        log.error("Что-то пошло не так. Пожалуйста, обратитесь в техническую поддержку", e);
-        return new ResponseEntity<>("Что-то пошло не так. Пожалуйста, обратитесь в техническую поддержку", HttpStatus.INTERNAL_SERVER_ERROR);
+        log.error("Something went wrong. Please contact technical support", e);
+        return new ResponseEntity<>("Something went wrong. Please contact technical support", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

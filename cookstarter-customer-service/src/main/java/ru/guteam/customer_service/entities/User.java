@@ -2,7 +2,6 @@ package ru.guteam.customer_service.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.guteam.customer_service.entities.utils.enums.UsersTypeEnum;
 
 import javax.persistence.*;
 

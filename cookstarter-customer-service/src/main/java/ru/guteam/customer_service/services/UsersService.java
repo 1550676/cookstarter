@@ -9,12 +9,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.guteam.customer_service.entities.UsersInfo;
 import ru.guteam.customer_service.entities.User;
 import ru.guteam.customer_service.entities.Role;
 import ru.guteam.customer_service.entities.utils.RestaurantInfo;
 import ru.guteam.customer_service.entities.utils.SystemUser;
-import ru.guteam.customer_service.entities.utils.enums.UsersTypeEnum;
 import ru.guteam.customer_service.repositories.UsersRepository;
 
 import java.util.Arrays;

@@ -21,7 +21,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor
-@Api("Set of endpoints for users information")
+@Api("Set of endpoints for requesting and providing user information")
 public class UsersInfoController {
     private final UsersService usersService;
     private final UsersInfoService usersInfoService;
