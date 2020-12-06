@@ -43,10 +43,10 @@ public class RegistrationController {
 
     @ApiOperation("Returns HttpStatus and user's id of trying registration procedure for users. Inside the object of SystemUser type is data about them.")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> customerRegistration(@RequestBody @ApiParam("Cannot be empty") @Valid SystemUser systemUser) {
+    public ResponseEntity<?> userRegistration(@RequestBody @ApiParam("Cannot be empty") @Valid SystemUser systemUser) {
         String username = systemUser.getUsername();
         if (usersService.existsByUsername(username)) {
-            return new ResponseEntity<>("Пользователь с логином: " + username + " уже существует", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Registration is not possible. User with login: " + username + " already exists", HttpStatus.CONFLICT);
         }
         usersInfoService.saveBySystemUser(systemUser);
         User user = usersService.findByUsername(username);
@@ -65,7 +65,7 @@ public class RegistrationController {
         ValidationErrorDTO dto = new ValidationErrorDTO();
         for (FieldError fieldError : fieldErrors) {
             dto.addFieldError(fieldError.getField(), fieldError.getDefaultMessage());
-            log.info("Ошибка при заполнении поля " + fieldError.getField() +
+            log.info("Error filling in the input field " + fieldError.getField() +
                     ": " + fieldError.getDefaultMessage());
         }
         return dto;
