@@ -14,11 +14,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=users
     username: postgres
-    password: admin
+    password: ${dbPassword}
   jackson:
     serialization:
       indent_output: true
-
-jwt:
-  secret: topsecretkey123rieubherotuh3498th398gh395g8h598gh4g8gidufghdifughi43gg4334t3h4gi34uhgi35uhgi35ughi45ugho98dhf98bhg
-
