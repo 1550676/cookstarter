@@ -19,13 +19,3 @@ spring:
 app:
   jwt:
     secret-key: topsecretkey123rieubherotuh3498th398gh395g8h598gh4g8gidufghdifughi43gg4334t3h4gi34uhgi35uhgi35ughi45ugho98dhf98bhg
-    inner-token-lifetime: 60
-  order-board:
-    path: https://cookstarter-order-board.herokuapp.com
-    add: /add
-  customer-service:
-    path: https://cookstarter-users-service.herokuapp.com
-    get-info: /users/info/%s
-  restaurant-service:
-    path: https://cookstarter-restaurant-service.herokuapp.com
-    get-dish: /dish/get/%s

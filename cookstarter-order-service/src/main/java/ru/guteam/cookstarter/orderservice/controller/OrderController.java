@@ -5,9 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.guteam.cookstarter.api.dto.StatusResponse;
 import ru.guteam.cookstarter.api.dto.orderservice.OrderDto;
-import ru.guteam.cookstarter.api.dto.orderservice.OrderStatusDto;
 import ru.guteam.cookstarter.orderservice.controller.util.StatusResponseBuilder;
-import ru.guteam.cookstarter.orderservice.handler.StatusHandler;
 import ru.guteam.cookstarter.orderservice.service.OrderService;
 
 import javax.validation.Valid;
@@ -21,7 +19,6 @@ import static ru.guteam.cookstarter.api.dto.RequestMessageHeaders.JWT_TOKEN_HEAD
 public class OrderController {
 
     private final OrderService orderService;
-    private final StatusHandler statusHandler;
 
     @CrossOrigin
     @PostMapping("/add")
@@ -74,13 +71,5 @@ public class OrderController {
     public List<OrderDto> getAllByRestaurantId(@PathVariable("id") Long id,
                                                @RequestHeader(JWT_TOKEN_HEADER) String token) {
         return orderService.getAllByRestaurantId(id);
-    }
-
-    @CrossOrigin
-    @PostMapping("/set-status")
-    public ResponseEntity<StatusResponse> setStatus(@Valid @RequestBody OrderStatusDto orderStatusDto,
-                                                    @RequestHeader(JWT_TOKEN_HEADER) String token) {
-        statusHandler.handle(orderStatusDto.getId(), orderStatusDto.getStatus());
-        return StatusResponseBuilder.ok();
     }
 }

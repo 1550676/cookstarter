@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import ru.guteam.cookstarter.orderservice.exception.AuthorizationException;
-import ru.guteam.cookstarter.orderservice.service.JwtService;
+import ru.guteam.cookstarter.orderservice.service.JwtValidationService;
 
 @Slf4j
 @Aspect
@@ -19,7 +19,7 @@ public class TokenValidationAspect {
     @Value("${app.auth-type}")
     private String authType;
 
-    private final JwtService jwtValidationService;
+    private final JwtValidationService jwtValidationService;
 
     @Before("execution(* ru.guteam.cookstarter.orderservice.controller.OrderController.* (*, java.lang.String))")
     public void tokenCheck(JoinPoint joinPoint) {

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.guteam.cookstarter.api.dto.orderservice.OrderDto;
-import ru.guteam.cookstarter.api.enums.OrderStatus;
 import ru.guteam.cookstarter.orderservice.aspect.annotation.CheckIdIsNotNull;
 import ru.guteam.cookstarter.orderservice.exception.OrderProcessingException;
 import ru.guteam.cookstarter.orderservice.model.Order;
@@ -131,10 +130,5 @@ public class OrderService {
         return orderRepository.findAllByRestaurantId(id).stream()
                 .map(OrderMapping::toDto)
                 .collect(Collectors.toList());
-    }
-
-    @Transactional
-    public void setStatus(Long id, OrderStatus status) {
-        orderRepository.setStatusById(id, status);
     }
 }
